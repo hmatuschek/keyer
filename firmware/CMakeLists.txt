@@ -4,14 +4,14 @@ set(AVR_PROGRAMMER stk500v2)
 set(AVR_UPLOADTOOL_PORT /dev/tty.usbmodem1411)
 
 # Specify CPU
-set(AVR_MCU atmega168)
+set(AVR_MCU attiny45)
 
 # Specify fuse magic
 set(AVR_H_FUSE 0xdf)
-set(AVR_L_FUSE 0x62)
+set(AVR_L_FUSE 0xe2)
 
 # Specify CPU frequency
-set(MCU_SPEED "1000000UL")
+set(MCU_SPEED "8000000UL")
 
 # Include avg-gcc toolchain
 include(generic-gcc-avr)

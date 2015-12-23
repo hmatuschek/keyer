@@ -16497,10 +16497,10 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 </classes>
 <parts>
 <part name="IC1" library="atmel" deviceset="TINY22" device="P"/>
-<part name="C1" library="rcl" deviceset="C-EU" device="050-025X075" value="68pF"/>
-<part name="C2" library="rcl" deviceset="C-EU" device="050-025X075" value="68pF"/>
-<part name="R1" library="rcl" deviceset="R-EU_" device="0204/5" value="4.7M"/>
-<part name="R2" library="rcl" deviceset="R-EU_" device="0204/2V" value="4.7M"/>
+<part name="C1" library="rcl" deviceset="C-EU" device="050-025X075" value="22pF*"/>
+<part name="C2" library="rcl" deviceset="C-EU" device="050-025X075" value="22pF*"/>
+<part name="R1" library="rcl" deviceset="R-EU_" device="0204/5" value="1M"/>
+<part name="R2" library="rcl" deviceset="R-EU_" device="0204/2V" value="1M"/>
 <part name="JP1" library="pinhead" deviceset="PINHD-1X2" device="" value="KEY OUT"/>
 <part name="JP2" library="pinhead" deviceset="PINHD-1X2" device="" value="paddle"/>
 <part name="P+1" library="supply1" deviceset="+5V" device=""/>
@@ -16585,6 +16585,7 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <text x="30.48" y="86.36" size="1.778" layer="97" rot="R270">9V NiMH</text>
 <text x="12.7" y="109.22" size="1.778" layer="97">A = 12V / I_max</text>
 <text x="-7.62" y="76.2" size="1.778" layer="97">B = 0.6V/I_trickle</text>
+<text x="83.82" y="17.78" size="1.778" layer="97">*) optional</text>
 </plain>
 <instances>
 <instance part="IC1" gate="G$1" x="38.1" y="38.1"/>
