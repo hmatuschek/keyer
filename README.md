@@ -3,7 +3,7 @@ This tiny circuit and its firmware implements a simple electronic CW keyer using
 
 The central logic of the keyer is implemented in software using a ATTiny 45 MCU. It implements a simple (mode A) electronic CW key. The capacitive touch interface is easy too. It basically measures the capacity of the metal paddles which changes as they get touched with the hand. In fact, the hardware measures the time needed to charge the paddles though a large resistor. This time increases significantly if the paddle is touched. 
 
-The circuit provides a open-collector output to switch even simple transmitters which expect a straight key. Additionally an LED and a side-tone generator are present for practicing. The speed of the keyer can be set using a potentiometer in a range from 10WPM to 42WPM.
+The circuit provides a open-collector output to switch even simple transmitters which expect a straight key. Additionally an LED and a side-tone generator are present for practicing. The speed of the keyer can be set using a potentiometer in a range from 10WPM to 42WPM. Please note that the speed gets updated only while the key is idle.
 
 
 ## License

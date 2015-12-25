@@ -350,5 +350,12 @@ UsedLibrary="/Users/hannes/Uni/Elektronik/lbr/avr-6.lbr"
 UsedLibrary="/Users/hannes/Uni/Elektronik/lbr/attiny45.lbr"
 UsedLibrary="/Users/hannes/Uni/Elektronik/lbr/adafruit.lbr"
 
+[Win_1]
+Type="Control Panel"
+Loc="0 23 599 422"
+State=2
+Number=0
+
 [Desktop]
 Screen="1366 768"
+Window="Win_1"

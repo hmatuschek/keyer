@@ -163,8 +163,8 @@ uint16_t get_dit_len() {
 /** Possible states of the state machine. */
 typedef enum {
   IDLE,         ///< Idle, wait for keys.
-  SEND_DIT,     ///< Send a dit
-  SEND_DAH     ///< Send a dah
+  SEND_DIT,     ///< Send a dit.
+  SEND_DAH      ///< Send a dah.
 } State;
 
 /// The current state.
@@ -174,7 +174,7 @@ volatile State last_state = IDLE;
 /// The current dit length in ms.
 /// Gets updated on startup.
 volatile uint16_t dit_len = 60;
-/// Precomputed multiples of ditlen
+// Precomputed multiples of ditlen
 volatile uint16_t dit_2len = 2*60;
 volatile uint16_t dit_3len = 3*60;
 volatile uint16_t dit_4len = 4*60;
@@ -193,41 +193,41 @@ int main(void)
 
   // Calibrate the touch interface,
   // take the maximum threshold from 100 trials
-  key(1);
   uint32_t thres = 0;
   for (uint8_t i=0; i<100; i++) {
     thres = max(thres, calibrate_touch());
   }
-  key(0);
 
-  // on calibration error (delay threshold to large, sould not happen)
+  // on calibration error
+  // (delay threshold to large, sould not happen)
   while (MAX_DELAY == thres) {
     // -> blink trap
     toggle_key();
     _delay_ms(200);
   }
 
-  // Measure speed
+  // Measure speed setting...
   start_adc();
-  // Wait for the ADC to finish
+  // ... wait for the ADC to finish
   while (! adc_available()) { }
-  // Compute dit lenght
+  // ... compute dit lenght
   dit_len = get_dit_len();
-  // Precompute multiples of dit len
+  // ... precompute some multiples of dit len
   dit_2len = 2*dit_len; dit_3len = 3*dit_len; dit_4len = 4*dit_len;
 
-  // Enable interrupts globally
+  // enable interrupts globally
   sei();
 
   // Go.
   state = IDLE;
   last_state = IDLE;
 
-  // Poll paddles
-  while(1) {
-    // If waiting for the next symbol
+  // Poll paddles.
+  while(1)
+  {
+    // If waiting for the next symbol...
     if (IDLE == state) {
-      // Dispatch by paddle state
+      // ... dispatch by paddle state
       // (left -> dit, right -> dah, both -> alternate dit & dah)
       switch (read_touch(thres)) {
         // On left paddle
@@ -279,7 +279,7 @@ ISR (TIMER0_COMPA_vect)
   static uint16_t count = 0;
 
   if (SEND_DIT == state) {
-    // Send a dit (10)
+    // Send a dit (10, with additional pause)
     if (0 == count) {
       key(1); count++;
     } else if (dit_len == count) {
@@ -292,7 +292,7 @@ ISR (TIMER0_COMPA_vect)
       count++;
     }
   } else if (SEND_DAH == state) {
-    // Send a dah (1110)
+    // Send a dah (1110, with additional pause)
     if (0 == count) {
       key(1); count++;
     } else if (dit_3len == count) {

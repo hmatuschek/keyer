@@ -68,6 +68,7 @@
 <dimension x1="68.25" y1="30.47" x2="0" y2="30.47" x3="34.125" y3="33.02" textsize="1.778" layer="20"/>
 <dimension x1="0" y1="30.47" x2="0" y2="0" x3="-2.54" y3="15.235" textsize="1.778" layer="20"/>
 <hole x="63.5" y="25.4" drill="2.8"/>
+<text x="2.54" y="22.86" size="1.778" layer="51" rot="R270">Keyer rev. 1</text>
 </plain>
 <libraries>
 <library name="rcl">
