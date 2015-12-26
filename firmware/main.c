@@ -31,7 +31,7 @@
 
 // LUT of 32 dit-lengths values (in ms),
 // (approx) linear in WPM, from 10 to 42 WPM.
-static const uint16_t dit_len_lut[] PROGMEM = {
+static const uint16_t dit_len_lut[] = {
   120, 109, 100,  92,  86,  80,  75,  70,
    67,  63,  60,  57,  54,  52,  50,  48,
    46,  44,  43,  41,  40,  39,  37,  36,
@@ -84,9 +84,9 @@ uint32_t calibrate_touch() {
   // Increase threshold for reliable detection
   // (this decreses the sensitivity for the sake
   // of reduced false-positives). The factor depends
-  // on the hardware and you need to experiment with
+  // on the hardware and may you need to experiment with
   // this value.
-  return 3*thres;
+  return 2*thres;
 }
 
 
@@ -125,7 +125,7 @@ void toggle_key() {
 /// Initializes the ADC.
 void init_adc() {
   // Set as input (high Z)
-  DDRB  |= (1 << DDB3);
+  DDRB  &= ~(1 << DDB3);
   // Disable digital input buffer of PB3
   DIDR0 |= (1 << ADC3D);
   // Config prescaler (no iterrupt, auto trigger, ADC still disabled)
@@ -156,7 +156,8 @@ uint8_t adc_value() {
 /// Returns the dit length in ms as defined by the ADC value.
 uint16_t get_dit_len() {
   // Simply return the corresponding LUT value
-  return pgm_read_word_near(&dit_len_lut[adc_value() % 32]);
+  //return pgm_read_word_near(&dit_len_lut[adc_value() % 32]);
+  return dit_len_lut[adc_value() % 32];
 }
 
 
